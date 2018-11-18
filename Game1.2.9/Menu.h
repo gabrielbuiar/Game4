@@ -30,8 +30,8 @@ private:
 	const char* SCOTT = "Textures/Scott.png";
 	const char* RAMONA = "Textures/Ramona.png";
 
-	const float WINDOW_WIDHT = 1920.0f;
-	const float WINDOW_HEIGHT = 1080.0f;
+	const float WINDOW_WIDHT = 1366.0f;
+	const float WINDOW_HEIGHT = 768.0f;
 
 	sf::Texture menuTexture;
 	sf::Sprite menuSprite;

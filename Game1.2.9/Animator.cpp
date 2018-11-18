@@ -1,6 +1,6 @@
 #include "Animator.h"
 
-
+//
 
 Animator::Animator(float switchTime)
 {

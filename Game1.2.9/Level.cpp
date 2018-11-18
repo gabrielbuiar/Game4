@@ -67,7 +67,8 @@ void Level::checkCollisions()
 	ListT<Player*>::Element<Player*>* pAux2 = Players.getFirst();
 	while (pAux2 != NULL)
 	{
-		Enemies.checkCollision(pAux2->getInf(), -.5f);
+		if (!pAux2->getInf()->Dead())
+			Enemies.checkCollision(pAux2->getInf(), -.5f);
 		pAux2 = pAux2->getNext();
 	}
 
@@ -80,21 +81,26 @@ void Level::checkCollisions()
 	}
 
 	//Collisions between the enemies and the platforms
-	ListT<Enemy*>::Element<Enemy*>* pAux1 = Enemies.getFirst();
+	ListT<Enemy1*>::Element<Enemy1*>* pAux1 = Enemies.getFirst1();
 	while (pAux1 != NULL)
 	{
 		Platforms.CheckCollision(pAux1->getInf(), 1.f);
 		pAux1 = pAux1->getNext();
 	}
 
+	ListT<Enemy2*>::Element<Enemy2*>* pAux4 = Enemies.getFirst2();
+
+	while (pAux4 != NULL)
+	{
+		Platforms.CheckCollision(pAux4->getInf(), 1.f);
+		pAux4 = pAux4->getNext();
+	}
 }
 
 void Level::save()
 {
 	std::ofstream Save("Game.dat", std::ios::out);
 	Save << levelId << std::endl;
-
-	std::cout << "--------" << std::endl;
 
 	Backgrounds.save();
 	Platforms.save();
@@ -140,8 +146,10 @@ void Level::Execute()
 
 		//Update
 		Players.update(deltaTime);
-		if (!P2)
+		if ((!P2) || (P2 && player2->Dead()))
 			Enemies.update(deltaTime, player1->getPosition());
+		else if (P2 && player1->Dead())
+			Enemies.update(deltaTime, player2->getPosition());
 		else
 			Enemies.update(deltaTime, player1->getPosition(), player2->getPosition());
 

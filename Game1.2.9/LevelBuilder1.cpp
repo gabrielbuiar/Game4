@@ -115,9 +115,9 @@ void LevelBuilder1::BuildPlayer2(sf::Vector2f position, sf::Vector2f size, const
 
 void LevelBuilder1::BuildEnemy(sf::Vector2f position, sf::Vector2f size)
 {
-	Enemy* pAux = new Enemy();
+	Enemy1* pAux = new Enemy1();
 	pAux->setLife(500);
-	pAux->InitializeEnemy(position, size, "Textures/Enemy1.png", sf::Vector2u(8, 1), 300.0f, 200.0);
+	pAux->InitializeEnemy1(position, size, "Textures/Enemy1.png", sf::Vector2u(8, 1), 300.0f, 80.0);
 	pAux->includeTextureVector((char*) "Textures/Enemy1.png");
 	pAux->includeImgCountVector(6);
 	pAux->setDamage(7);
@@ -129,14 +129,41 @@ void LevelBuilder1::BuildEnemy(sf::Vector2f position, sf::Vector2f size)
 
 void LevelBuilder1::BuildEnemy(sf::Vector2f position, sf::Vector2f size, const unsigned int life)
 {
-	Enemy* pAux = new Enemy();
+	Enemy1* pAux = new Enemy1();
 	pAux->setLife(500);
-	pAux->InitializeEnemy(position, size, "Textures/Enemy1.png", sf::Vector2u(8, 1), 300.0f, 200.0);
+	pAux->InitializeEnemy1(position, size, "Textures/Enemy1.png", sf::Vector2u(8, 1), 300.0f, 80.0);
 	pAux->includeTextureVector((char*) "Textures/Enemy1.png");
 	pAux->includeImgCountVector(6);
 	pAux->setDamage(10);
 	pAux->setKillPoints(150);
 	pAux->setId(7);
+	pAux->setLife(life);
+	currentLevel->includeEnemy(pAux);
+}
+
+void LevelBuilder1::BuildEnemy2(sf::Vector2f position, sf::Vector2f size, const float pos1, const float pos2)
+{
+	Enemy2* pAux = new Enemy2();
+	pAux->setLife(500);
+	pAux->InitializeEnemy2(position, size, "Textures/Enemy1.png", sf::Vector2u(8, 1), 300.0f, 200.0, pos1, pos2);
+	pAux->includeTextureVector((char*) "Textures/Enemy1.png");
+	pAux->includeImgCountVector(6);
+	pAux->setDamage(7);
+	pAux->setKillPoints(150);
+	pAux->setId(8);
+	currentLevel->includeEnemy(pAux);
+}
+
+void LevelBuilder1::BuildEnemy2(sf::Vector2f position, sf::Vector2f size, const float pos1, const float pos2, const unsigned int life)
+{
+	Enemy2* pAux = new Enemy2();
+	pAux->setLife(500);
+	pAux->InitializeEnemy2(position, size, "Textures/Enemy1.png", sf::Vector2u(8, 1), 300.0f, 200.0, pos1, pos2);
+	pAux->includeTextureVector((char*) "Textures/Enemy1.png");
+	pAux->includeImgCountVector(6);
+	pAux->setDamage(7);
+	pAux->setKillPoints(150);
+	pAux->setId(8);
 	pAux->setLife(life);
 	currentLevel->includeEnemy(pAux);
 }
@@ -189,7 +216,6 @@ void LevelBuilder1::load(std::streampos str)
 		Load.seekg(str);
 
 		Load >> id;
-		std::cout << id << "-" << std::endl;
 
 		str = Load.tellg();
 
@@ -361,6 +387,23 @@ std::streampos LevelBuilder1::LoadEnemy(std::streampos str)
 
 	Load >> position.x >> position.y >> size.x >> size.y >> life;
 	BuildEnemy(position, size, life);
+
+	str = Load.tellg();
+
+	return str;
+}
+
+std::streampos LevelBuilder1::LoadEnemy2(std::streampos str)
+{
+	std::ifstream Load("Game.dat", std::ios::in);
+	sf::Vector2f position, size;
+	unsigned int life;
+	float pos1, pos2;
+
+	Load.seekg(str);
+
+	Load >> position.x >> position.y >> size.x >> size.y >> pos1 >> pos2 >> life;
+	BuildEnemy2(position, size, pos1, pos2, life);
 
 	str = Load.tellg();
 

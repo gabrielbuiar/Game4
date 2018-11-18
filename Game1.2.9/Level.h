@@ -32,7 +32,8 @@ public:
 	void setPlayer2(Player* player) { player2 = player; }
 
 	void includePlayer(Player*  player);
-	void includeEnemy(Enemy* enemy) { Enemies.include(enemy); }
+	void includeEnemy(Enemy1* enemy) { Enemies.include(enemy); }
+	void includeEnemy(Enemy2* enemy) { Enemies.include(enemy); }
 	void includePlatform(Platform* platform) { Platforms.include(*platform); }
 	void includeBackground(Background* background) { Backgrounds.include(*background); }
 	void save();

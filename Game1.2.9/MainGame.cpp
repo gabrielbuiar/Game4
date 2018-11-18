@@ -22,7 +22,7 @@ void MainGame::Execute()
 	while (op != 4)
 	{
 		op = menu->execute();
-		op = 3;
+		//op = 3;
 
 		switch (op)
 		{
@@ -65,6 +65,7 @@ void MainGame::createLevel_1_1(LevelBuilder& builder)
 	builder.BuildEnemy(sf::Vector2f(1550.0f, WINDOW_HEIGHT - 80.f), sf::Vector2f(80.f, 125.f));
 	builder.BuildEnemy(sf::Vector2f(1850.0f, WINDOW_HEIGHT - 80.f), sf::Vector2f(80.f, 125.f));
 	builder.BuildEnemy(sf::Vector2f(450.0f, WINDOW_HEIGHT - 80.f), sf::Vector2f(80.f, 125.f));
+	builder.BuildEnemy2(sf::Vector2f(1450.0f, WINDOW_HEIGHT - 80.f), sf::Vector2f(80.f, 125.f), 1000.f, 1750.f);
 }
 
 void MainGame::createLevel_1_2(LevelBuilder& builder)
@@ -93,7 +94,6 @@ Level * MainGame::load()
 	std::streampos str;
 
 	Load >> id;
-	std::cout << id << std::endl;
 
 	str = Load.tellg();
 
