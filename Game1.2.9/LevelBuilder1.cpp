@@ -178,7 +178,7 @@ void LevelBuilder1::Load(std::streampos str)
 		{
 			str = LoadEnemy(str);
 			Load.seekg(str);
-			//id = -1;
+			id = -1;
 			break;
 		}
 		default:
