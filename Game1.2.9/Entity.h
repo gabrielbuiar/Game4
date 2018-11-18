@@ -1,6 +1,7 @@
 #pragma once
 #include"SFML/Graphics.hpp"
 #include<fstream>
+#include<iostream>
 
 class Entity
 {
@@ -17,7 +18,7 @@ public:
 	virtual void move(sf::Vector2f position, float speed) {}
 	virtual bool checkCollision(Entity& other, sf::Vector2f& direction, float push);
 	void setId(const int id) { this->id = id; }
-	void save(std::ofstream& Save) { Save << id << ' ' << base.getPosition().x << ' ' << base.getPosition().y << ' ' << base.getSize().x << ' ' << base.getSize().y << ' ' << textureFile << std::endl; }
+	virtual void save(std::ofstream& Save) { std::cout << "--------" << textureFile << std::endl; Save << id << ' ' << base.getPosition().x << ' ' << base.getPosition().y << ' ' << base.getSize().x << ' ' << base.getSize().y << ' ' << textureFile << std::endl; }
 
 protected:
 	sf::RectangleShape base;

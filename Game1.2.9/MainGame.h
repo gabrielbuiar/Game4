@@ -13,6 +13,7 @@ public:
 	//void InitializePlatforms();
 	void createLevel_1_1(LevelBuilder& builder);
 	void createLevel_1_2(LevelBuilder& builder);
+	Level* load();
 
 private:
 	const float WINDOW_HEIGHT = 1080.f;

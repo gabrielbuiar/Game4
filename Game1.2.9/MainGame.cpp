@@ -19,9 +19,10 @@ void MainGame::Execute()
 	menu = new Menu;
 	int op = 0;
 
-	while (op != 3)
+	while (op != 4)
 	{
 		op = menu->execute();
+		op = 3;
 
 		switch (op)
 		{
@@ -41,7 +42,9 @@ void MainGame::Execute()
 		}
 		case 3:
 		{
-
+			Level* level = load();
+			level->Execute();
+			break;
 		}
 		}
 	}
@@ -80,4 +83,39 @@ void MainGame::createLevel_1_2(LevelBuilder& builder)
 	builder.BuildEnemy(sf::Vector2f(1550.0f, WINDOW_HEIGHT - 80.f), sf::Vector2f(100.0f, 150.0f));
 	builder.BuildEnemy(sf::Vector2f(1850.0f, WINDOW_HEIGHT - 80.f), sf::Vector2f(100.0f, 150.0f));
 	builder.BuildEnemy(sf::Vector2f(450.0f, WINDOW_HEIGHT - 80.f), sf::Vector2f(100.0f, 150.0f));
+}
+
+Level * MainGame::load()
+{
+	std::ifstream Load("Game.dat", std::ios::in);
+	int id;
+
+	std::streampos str;
+
+	Load >> id;
+	std::cout << id << std::endl;
+
+	str = Load.tellg();
+
+	switch (id)
+	{
+	case 1:
+	{
+		LevelBuilder1 builder;
+		builder.BuildLevel();
+		builder.load(str);
+		
+		return builder.getLevel();
+	}
+	case 2:
+	{
+		//Implement for LevelBuilder2
+	}
+	default:
+	{
+		break;
+	}
+	}
+
+	return nullptr;
 }

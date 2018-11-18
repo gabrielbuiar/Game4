@@ -19,6 +19,7 @@ public:
 	void operator+=(unsigned int points) {	this->points += points; }
 	const bool attacking() { return Attacking; }
 	void save(std::ofstream& Save) { Save << id << ' ' << base.getPosition().x << ' ' << base.getPosition().y << ' ' << base.getSize().x << ' ' << base.getSize().y << ' ' << life << ' ' << points << std::endl; }
+	void setPoints(const unsigned int points) { this->points = points; }
 
 private:
 	sf::Keyboard::Key KeyRight;
@@ -29,4 +30,3 @@ private:
 	bool player2 = false;
 	bool Attacking = false;
 };
-		

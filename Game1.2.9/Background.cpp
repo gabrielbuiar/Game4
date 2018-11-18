@@ -18,6 +18,7 @@ Background::~Background()
 
 void Background::Initialize(sf::Vector2f position, sf::Vector2f size, const char * textureFile, const float increment, const float incrementScale)
 {
+	InitializeEnt(position, size, textureFile);
 	this->position = position;
 	this->size = size;
 	setTexture(textureFile);
@@ -27,7 +28,6 @@ void Background::Initialize(sf::Vector2f position, sf::Vector2f size, const char
 	iposition = this->position;
 	increment0 = increment;
 	incrementScale0 = incrementScale;
-
 }
 
 void Background::setTexture(const char * textureFile)

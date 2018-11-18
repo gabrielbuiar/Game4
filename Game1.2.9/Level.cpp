@@ -94,6 +94,8 @@ void Level::save()
 	std::ofstream Save("Game.dat", std::ios::out);
 	Save << levelId << std::endl;
 
+	std::cout << "--------" << std::endl;
+
 	Backgrounds.save();
 	Platforms.save();
 	Players.save();
@@ -123,6 +125,7 @@ void Level::Execute()
 			case sf::Event::Closed:
 				//Closes window
 				window->close();
+				save();
 				break;
 
 			case sf::Event::Resized:
@@ -177,6 +180,7 @@ void Level::Execute()
 		if ((!P2 && player1->Dead()) || (P2 && player1->Dead() && player2->Dead()))
 		{
 			window->close();
+			save();
 			break;
 		}
 

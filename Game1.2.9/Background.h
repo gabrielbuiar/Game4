@@ -15,7 +15,7 @@ public:
 	void move(sf::Vector2f playerPosition, float speed);
 	bool checkCollision(Entity& other, sf::Vector2f& direction, float push) { return false; }
 	void Stand() { stand = true; }
-	void save(std::ofstream& Save) { Save << id << ' ' << position.x << ' ' << position.y << ' ' << size.x << ' ' << size.y<< ' ' << textureFile << ' ' << increment0 << ' ' << incrementScale0 << std::endl; }
+	void save(std::ofstream& Save) { Save << id << ' ' << position.x << ' ' << position.y << ' ' << size.x << ' ' << size.y << ' ' << textureFile << ' ' << increment0 << ' ' << incrementScale0 << std::endl; }
 
 private:
 	float increment;
@@ -26,7 +26,7 @@ private:
 	sf::Vector2f position;
 	sf::Vector2f iposition;
 	bool stand = false;
-	float increment0;
-	float incrementScale0;
+	float increment0 = 0;
+	float incrementScale0 = 0;
 
 };
