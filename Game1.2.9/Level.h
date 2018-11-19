@@ -15,6 +15,7 @@
 #include "Background.h"
 #include "ListPlayer.h"
 #include "ListEnemy.h"
+#include "ListObstacles.h"
 #include <vector>
 #include <fstream>
 
@@ -26,8 +27,8 @@ public:
 	void Execute();
 	void ResizeView();
 
-	void InitializePlatforms();
-	void Initialize();
+	/*void InitializePlatforms();
+	void Initialize();*/
 	void setPlayer1(Player* player) { player1 = player; }
 	void setPlayer2(Player* player) { player2 = player; }
 
@@ -36,6 +37,8 @@ public:
 	void includeEnemy(Enemy2* enemy) { Enemies.include(enemy); }
 	void includePlatform(Platform* platform) { Platforms.include(*platform); }
 	void includeBackground(Background* background) { Backgrounds.include(*background); }
+	void includeObstacle(Obstacle* obstacle) { Obstacles.include(obstacle); }
+	void includeObstacle(Obstacle1* obstacle) { Obstacles.include(obstacle); }
 	void save();
 	void setId(const int id) { levelId = id; }
 
@@ -62,6 +65,7 @@ private:
 	ListEntity Backgrounds;
 	ListPlayer Players;
 	ListEnemy Enemies;
+	ListObstacles Obstacles;
 
 
 	//std::vector<sf::Sprite> Background;

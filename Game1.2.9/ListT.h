@@ -29,6 +29,7 @@ public:
 	void InitializeListT();
 	void include(TYPE inf);
 	void clear();
+	void remove(Element<TYPE>* pAux);
 
 	Element<TYPE>* getpFirst() { return pFirst; }
 	const Element<TYPE>* getpCurr() const { return pCurr; }
@@ -98,4 +99,26 @@ void ListT<TYPE>::clear()
 
 	pFirst = NULL;
 	pCurr = NULL;
+}
+
+template<class TYPE>
+inline void ListT<TYPE>::remove(Element<TYPE>* pAux)
+{
+	Element<TYPE>* paux0 = pFirst;
+	Element<TYPE>* paux1 = paux0;
+
+	if (pAux != pFirst)
+	{
+
+		while (paux1 != pAux)
+		{
+			paux0 = paux1;
+			paux1 = paux1->getNext();
+		}
+
+		paux0->setNext(paux1->getNext());
+		delete paux1;
+	}
+	else
+		delete pFirst;
 }

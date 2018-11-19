@@ -14,7 +14,7 @@ public:
 	//void setTexture(const char* textureFile);
 	virtual void Update(float deltaTime);
 	virtual void draw(sf::RenderWindow& window);
-	virtual void calcMovement(const float deltaTime) { std::cout << "1" << std::endl; }
+	virtual void calcMovement(const float deltaTime) {}
 	void SetTexture();
 	void onCollision(sf::Vector2f direction);
 	void includeTextureVector(char* file) { textureVector.push_back(file); }
@@ -29,6 +29,7 @@ public:
 	const unsigned int getDamage() { return damage; }
 	void setPositionx(const float positionx) { base.setPosition(positionx, base.getPosition().y); }
 	const unsigned int getLife() { return life; }
+	static void setLevelLimit(const float limit);
 
 protected:
 	Animator animator;
@@ -48,5 +49,6 @@ protected:
 	unsigned int lifei;
 	float LifePct = 1.0f;
 	bool dead = false;
+	static float LevelLimit;
 
 };

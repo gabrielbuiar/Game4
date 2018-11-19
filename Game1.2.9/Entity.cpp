@@ -29,7 +29,6 @@ void Entity::InitializeEnt(sf::Vector2f position, sf::Vector2f size, const char 
 	setTexture(textureFile);
 	if (textureFile != NULL)
 		strcpy_s(this->textureFile, textureFile);
-	//std::cout << this->textureFile << std::endl;
 }
 
 void Entity::Draw(sf::RenderWindow* window)

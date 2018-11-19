@@ -15,6 +15,8 @@ public:
 	virtual void BuildBackground(sf::Vector2f position, sf::Vector2f size) {}
 	virtual void BuildBackground_1(sf::Vector2f position, sf::Vector2f size, const char * textureFile, const float increment, const float incrementScale) {}
 	virtual void BuildBackground_2(sf::Vector2f position, sf::Vector2f size, const char* textureFile) {}
+	virtual void BuildObstacle(sf::Vector2f position, sf::Vector2f size) {}
+	virtual void BuildObstacle_1(sf::Vector2f position, sf::Vector2f size, float bulletSpeed, float bulletDamage) {}
 
 	virtual Level* getLevel();
 };

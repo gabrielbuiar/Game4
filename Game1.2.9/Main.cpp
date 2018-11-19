@@ -20,7 +20,6 @@ int main()
 		window.draw(shape);
 		window.display();
 	}*/
-	std::cout << "1" << std::endl;
 	MainGame* Game = new MainGame;
 	Game->Execute();
 

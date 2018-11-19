@@ -9,6 +9,7 @@ Level::Level() :
 	view(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(static_cast<float>(WINDOW_WIDHT), static_cast<float>(WINDOW_HEIGHT)))
 
 {
+	Character::setLevelLimit(WINDOW_HEIGHT + 75.f);
 }
 
 
@@ -20,17 +21,6 @@ void Level::ResizeView()
 {
 	float aspectRatio = float(window->getSize().x) / float(window->getSize().y);
 	view.setSize(VIEW_HEIGHT * aspectRatio, VIEW_HEIGHT);
-}
-
-void Level::InitializePlatforms()
-{
-	Platforms.includePlatform(sf::Vector2f(1500.0f, VIEW_HEIGHT), sf::Vector2f(3000.0f, 100.0f), "Textures/Backgrounds.png");
-	Platforms.includePlatform(sf::Vector2f(1000.0f, VIEW_HEIGHT / 2.0f), sf::Vector2f(1000.0f, 100.0f), "Textures/Backgrounds.png");
-}
-
-void Level::Initialize()
-{
-	InitializePlatforms();
 }
 
 void Level::includePlayer(Player * player)
@@ -95,6 +85,29 @@ void Level::checkCollisions()
 		Platforms.CheckCollision(pAux4->getInf(), 1.f);
 		pAux4 = pAux4->getNext();
 	}
+
+	//Collisions between the obstacles and the platforms
+	ListT<Entity*>::Element<Entity*>* pAux7 = Platforms.getFirst();
+	while (pAux7 != NULL)
+	{
+		Obstacles.checkCollision(pAux7->getInf(), 0.f);
+		pAux7 = pAux7->getNext();
+	}
+
+	//Collisions between the obstacles and the players
+	ListT<Player*>::Element<Player*>* pAux5 = Players.getFirst();
+	while (pAux5 != NULL)
+	{
+		Obstacles.checkCollision(pAux5->getInf(), 0.f);
+		pAux5 = pAux5->getNext();
+	}
+	//Collision between the obstacles and the enemies
+	ListT<Enemy1*>::Element<Enemy1*>* pAux6 = Enemies.getFirst1();
+	while (pAux6 != NULL)
+	{
+		Obstacles.checkCollision(pAux6->getInf(), 0.f);
+		pAux6 = pAux6->getNext();
+	}
 }
 
 void Level::save()
@@ -152,6 +165,7 @@ void Level::Execute()
 			Enemies.update(deltaTime, player2->getPosition());
 		else
 			Enemies.update(deltaTime, player1->getPosition(), player2->getPosition());
+		Obstacles.update(deltaTime);
 
 
 		if (!player1->Dead())
@@ -224,6 +238,7 @@ void Level::Execute()
 		Platforms.Draw(window);
 		Players.draw(window);
 		Enemies.draw(window);
+		Obstacles.draw(window);
 
 		window->display();
 		

@@ -206,6 +206,16 @@ void LevelBuilder1::BuildBackground_2(sf::Vector2f position, sf::Vector2f size, 
 	currentLevel->includeBackground(pAux);
 }
 
+void LevelBuilder1::BuildObstacle_1(sf::Vector2f position, sf::Vector2f size, float bulletSpeed, float bulletDamage)
+{
+	Obstacle1* pAux = new Obstacle1;
+	pAux->InitializeObstacle(position, size, "Textures/Obstacle1.png");
+	pAux->setBulletSpeed(bulletSpeed);
+	pAux->setBulletDamage(bulletDamage);
+	pAux->setId(9);
+	currentLevel->includeObstacle(pAux);
+}
+
 void LevelBuilder1::load(std::streampos str)
 {
 	std::ifstream Load("Game.dat", std::ios::in);
@@ -303,8 +313,6 @@ std::streampos LevelBuilder1::LoadBackground(std::streampos str)
 
 	Load >> position.x >> position.y >> size.x >> size.y >> textureFile >> increment >> incrementscale;
 	BuildBackground(position, size);
-
-	std::cout << position.x << ' ' << position.y << ' ' << size.x << ' ' << size.y << ' ' << textureFile << ' ' << increment << ' ' << incrementscale << std::endl;
 
 	str = Load.tellg();
 

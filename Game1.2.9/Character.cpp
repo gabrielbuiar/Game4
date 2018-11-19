@@ -48,6 +48,12 @@ void Character::Update(float deltaTime)
 		dead = true;
 	}
 
+	if (!Dead() && base.getPosition().y >= LevelLimit)
+	{
+		life = 0;
+		dead = true;
+	}
+
 	LifePct = float(life) / float(lifei);
 
 	calcMovement(deltaTime);
@@ -111,3 +117,10 @@ void Character::onCollision(sf::Vector2f direction)
 		}
 	}	
 }
+
+void Character::setLevelLimit(const float limit)
+{
+	Character::LevelLimit = limit;
+}
+
+float Character::LevelLimit = 0.f;

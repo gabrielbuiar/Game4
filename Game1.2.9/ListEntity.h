@@ -24,7 +24,7 @@ public:
 	void Update(const float daltaTime);
 	void move(sf::Vector2f position, float speed);
 	void CheckCollision(Character* other, const float push);
-	Entity* getFirst() { return Entities.getpFirst()->getInf(); }
+	ListT<Entity*>::Element<Entity*>* getFirst() { return Entities.getpFirst(); }
 	void save();
 
 private:

@@ -29,4 +29,5 @@ private:
 	unsigned int points = 0;
 	bool player2 = false;
 	bool Attacking = false;
+
 };

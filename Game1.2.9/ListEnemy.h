@@ -13,7 +13,7 @@ class ListEnemy
 public:
 	ListEnemy();
 	~ListEnemy();
-	void include(Enemy1* enemy) { if (enemy != NULL) enemies1.include(enemy); }
+	void include (Enemy1* enemy) { if (enemy != NULL) enemies1.include(enemy); }
 	void include(Enemy2* enemy) { if (enemy != NULL) enemies2.include(enemy); }
 	void draw(sf::RenderWindow* window);
 	void update(const float deltaTime, sf::Vector2f position1, sf::Vector2f position2);

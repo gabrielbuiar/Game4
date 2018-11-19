@@ -34,7 +34,11 @@ void Enemy::Update(float deltaTime, sf::Vector2f position1, sf::Vector2f positio
 		life = 0;
 		dead = true;
 	}
-
+	if (!Dead() && base.getPosition().y >= LevelLimit)
+	{
+		life = 0;
+		dead = true;
+	}
 	LifePct = float(life) / float(lifei);
 	calcMovement(deltaTime, position1, position2);
 	textureFile = getTextureFile(row);
