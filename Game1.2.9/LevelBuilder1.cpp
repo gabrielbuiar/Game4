@@ -206,7 +206,7 @@ void LevelBuilder1::BuildBackground_2(sf::Vector2f position, sf::Vector2f size, 
 	currentLevel->includeBackground(pAux);
 }
 
-void LevelBuilder1::BuildObstacle_1(sf::Vector2f position, sf::Vector2f size, float bulletSpeed, float bulletDamage)
+void LevelBuilder1::BuildObstacle_1(sf::Vector2f position, sf::Vector2f size, const float bulletSpeed, const float bulletDamage)
 {
 	Obstacle1* pAux = new Obstacle1;
 	pAux->InitializeObstacle(position, size, "Textures/Obstacle1.png");

@@ -11,13 +11,17 @@ public:
 	{
 	private:
 		Element<TYPE2>* pNext;
+		Element<TYPE2>* pPrev;
 		TYPE2 pInf;
 
 	public:
-		Element() { pNext = NULL; pInf = NULL; }
+		Element() { pNext = NULL; pInf = NULL; pPrev = NULL; }
 
 		void setNext(Element<TYPE2>* next) { pNext = next; }
 		Element<TYPE2>* getNext() { return pNext; }
+
+		void setPrev(Element<TYPE2>* prev) { pPrev = prev; }
+		Element<TYPE2>* getPrev() { return pPrev; }
 
 		void setInf(TYPE2 inf) { pInf = inf; }
 		TYPE2 getInf() { return pInf; }
@@ -76,6 +80,7 @@ void ListT<TYPE>::include(TYPE inf)
 		{
 			pAux->setNext(NULL);
 			pCurr->setNext(pAux);
+			pAux->setPrev(pCurr);
 			pCurr = pCurr->getNext();
 		}
 	//}
@@ -107,6 +112,11 @@ inline void ListT<TYPE>::remove(Element<TYPE>* pAux)
 	Element<TYPE>* paux0 = pFirst;
 	Element<TYPE>* paux1 = paux0;
 
+	if (pAux == pCurr)
+	{
+		if (pAux != pFirst)
+			pCurr = pCurr->getPrev();
+	}
 	if (pAux != pFirst)
 	{
 
@@ -117,6 +127,7 @@ inline void ListT<TYPE>::remove(Element<TYPE>* pAux)
 		}
 
 		paux0->setNext(paux1->getNext());
+		pAux->getNext()->setPrev(paux0);
 		delete paux1;
 	}
 	else

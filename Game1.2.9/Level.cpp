@@ -98,15 +98,23 @@ void Level::checkCollisions()
 	ListT<Player*>::Element<Player*>* pAux5 = Players.getFirst();
 	while (pAux5 != NULL)
 	{
-		Obstacles.checkCollision(pAux5->getInf(), 0.f);
+		Obstacles.checkCollision(pAux5->getInf(), 1.f);
 		pAux5 = pAux5->getNext();
 	}
 	//Collision between the obstacles and the enemies
 	ListT<Enemy1*>::Element<Enemy1*>* pAux6 = Enemies.getFirst1();
 	while (pAux6 != NULL)
 	{
-		Obstacles.checkCollision(pAux6->getInf(), 0.f);
+		Obstacles.checkCollision(pAux6->getInf(), 1.f);
 		pAux6 = pAux6->getNext();
+	}
+
+	pAux4 = Enemies.getFirst2();
+
+	while (pAux4 != NULL)
+	{
+		Obstacles.checkCollision(pAux4->getInf(), 1.f);
+		pAux4 = pAux4->getNext();
 	}
 }
 
@@ -121,9 +129,66 @@ void Level::save()
 	Enemies.save();
 }
 
+void Level::pause(sf::RenderWindow& window)
+{
+	bool flag = true;
+
+	if (!pauseDelay)
+	{
+		while (flag)
+		{
+			if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+				flag = false;
+		}
+		while (!flag)
+		{
+			window.clear();
+
+			sf::Font font;
+			sf::Text text1, text2, text3;
+			font.loadFromFile("Textures/whitrabt.ttf");
+			std::string s1 = "Pausado";
+			std::string s2 = "Pressione ESC para voltar";
+			std::string s3 = "Pressione ENTER para salvar";
+
+			text1.setString(s1);
+			text1.setFont(font);
+
+			text2.setString(s2);
+			text2.setFont(font);
+
+			text3.setString(s3);
+			text3.setFont(font);
+
+			text1.setPosition(sf::Vector2f(WINDOW_WIDHT / 2.f - 150.f, 50.f));
+			text2.setPosition(sf::Vector2f(WINDOW_WIDHT / 2.f - 150.f, 150.f));
+			text3.setPosition(sf::Vector2f(WINDOW_WIDHT / 2.f - 150.f, 250.f));
+
+			window.draw(text1);
+			window.draw(text2);
+			window.draw(text3);
+
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+				flag = true;
+			window.display();
+
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+			{
+				flag = true;
+				save();
+			}
+		}
+	}
+
+	pauseDelay++;
+	if (pauseDelay >= 10)
+		pauseDelay = 0;
+}
+
 void Level::Execute()
 {
 	window = new sf::RenderWindow(sf::VideoMode(WINDOW_WIDHT, WINDOW_HEIGHT), "GAME", sf::Style::Default);
+	this->window = window;
 
 	float deltaTime = 0.0f;
 	sf::Clock clock;
@@ -167,6 +232,8 @@ void Level::Execute()
 			Enemies.update(deltaTime, player1->getPosition(), player2->getPosition());
 		Obstacles.update(deltaTime);
 
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+			pause(*window);
 
 		if (!player1->Dead())
 		{

@@ -159,7 +159,6 @@
     <ClCompile Include="Enemy2.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Level.cpp" />
-    <ClCompile Include="LevelBuilder.cpp" />
     <ClCompile Include="LevelBuilder1.cpp" />
     <ClCompile Include="ListBackground.cpp" />
     <ClCompile Include="ListEnemy.cpp" />

@@ -1,10 +1,14 @@
 1
-1 2430.21 0 1920 1080 Textures/Background.png 0 1
-2 2206.01 0 1920 1080 Textures/Background_Layer_3.png -0.01 -15.2
-2 4126.01 0 1920 1080 Textures/Background_Layer_3.png -0.01 -15.2
+1 1250.44 0 1920 1080 Textures/Background.png 0 1
+2 1179.29 0 1920 1080 Textures/Background_Layer_3.png -0.01 -15.2
+2 3099.29 0 1920 1080 Textures/Background_Layer_3.png -0.01 -15.2
 3 -300 0 1920 1080 Textures/Background_Layer_2.png 0 1
 3 1620 0 1920 1080 Textures/Background_Layer_2.png 0 1
 4 1500 1080 3000 100 Textures/Platform.png
 4 1000 540 1000 100 Textures/Platform.png
 4 750 1080 20 200 Textures/Platform.png
-5 2841.64 955.093 100 150 0 0
+5 1658.98 839.952 100 150 0 300
+7 711.344 841.522 80 125 0
+7 1663.04 961.993 80 125 500
+7 1663.04 961.993 80 125 500
+7 280.135 967.5 80 125 0

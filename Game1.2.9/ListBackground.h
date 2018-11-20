@@ -11,7 +11,7 @@ public:
 	~ListBackground();
 	void include(Background* back);
 	void Draw(sf::RenderWindow* window);
-	void move(sf::Vector2f position, float speed);
+	void move(sf::Vector2f position, const float speed);
 	ListT<Background*>::Element<Background*>* getFirst() { return backgrounds.getpFirst(); }
 	void save();
 

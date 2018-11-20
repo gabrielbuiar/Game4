@@ -16,6 +16,7 @@
 #include "ListPlayer.h"
 #include "ListEnemy.h"
 #include "ListObstacles.h"
+#include "ListBackground.h"
 #include <vector>
 #include <fstream>
 
@@ -36,11 +37,12 @@ public:
 	void includeEnemy(Enemy1* enemy) { Enemies.include(enemy); }
 	void includeEnemy(Enemy2* enemy) { Enemies.include(enemy); }
 	void includePlatform(Platform* platform) { Platforms.include(*platform); }
-	void includeBackground(Background* background) { Backgrounds.include(*background); }
+	void includeBackground(Background* background) { Backgrounds.include(background); }
 	void includeObstacle(Obstacle* obstacle) { Obstacles.include(obstacle); }
 	void includeObstacle(Obstacle1* obstacle) { Obstacles.include(obstacle); }
 	void save();
 	void setId(const int id) { levelId = id; }
+	void pause(sf::RenderWindow& window);
 
 	void checkCollisions();
 
@@ -62,7 +64,7 @@ private:
 
 	//Lists of the different Entities
 	ListEntity Platforms;
-	ListEntity Backgrounds;
+	ListBackground Backgrounds;
 	ListPlayer Players;
 	ListEnemy Enemies;
 	ListObstacles Obstacles;
@@ -75,6 +77,8 @@ private:
 
 	bool FirstPlayer = true;
 	bool P2 = false;
+
+	int pauseDelay = 0;
 
 	Background back;
 };

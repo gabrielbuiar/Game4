@@ -48,9 +48,6 @@
     <ClCompile Include="Player.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="LevelBuilder.cpp">
-      <Filter>Arquivos de Origem</Filter>
-    </ClCompile>
     <ClCompile Include="LevelBuilder1.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>

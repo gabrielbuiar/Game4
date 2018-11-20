@@ -64,12 +64,12 @@ void MainGame::createLevel_1_1(LevelBuilder& builder)
 	builder.BuildPlayer(sf::Vector2f(100.0f, WINDOW_HEIGHT - 75.f), sf::Vector2f(100.0f, 150.0f));
 	builder.BuildPlatform(sf::Vector2f(1500.0f, WINDOW_HEIGHT), sf::Vector2f(3000.0f, 100.0f), "Textures/Platform.png");
 	builder.BuildPlatform(sf::Vector2f(1000.0f, WINDOW_HEIGHT / 2.0f), sf::Vector2f(1000.0f, 100.0f), "Textures/Platform.png");
-	//builder.BuildEnemy(sf::Vector2f(1050.0f, WINDOW_HEIGHT - 80.f), sf::Vector2f(80.f, 125.f));
-	//builder.BuildEnemy(sf::Vector2f(1550.0f, WINDOW_HEIGHT - 80.f), sf::Vector2f(80.f, 125.f));
-	//builder.BuildEnemy(sf::Vector2f(1850.0f, WINDOW_HEIGHT - 80.f), sf::Vector2f(80.f, 125.f));
-	//builder.BuildEnemy(sf::Vector2f(450.0f, WINDOW_HEIGHT - 80.f), sf::Vector2f(80.f, 125.f));
+	builder.BuildEnemy(sf::Vector2f(1050.0f, WINDOW_HEIGHT - 80.f), sf::Vector2f(80.f, 125.f));
+	builder.BuildEnemy(sf::Vector2f(1550.0f, WINDOW_HEIGHT - 80.f), sf::Vector2f(80.f, 125.f));
+	builder.BuildEnemy(sf::Vector2f(1850.0f, WINDOW_HEIGHT - 80.f), sf::Vector2f(80.f, 125.f));
+	builder.BuildEnemy(sf::Vector2f(450.0f, WINDOW_HEIGHT - 80.f), sf::Vector2f(80.f, 125.f));
 	//builder.BuildEnemy2(sf::Vector2f(1450.0f, WINDOW_HEIGHT - 80.f), sf::Vector2f(80.f, 125.f), 1000.f, 1750.f);
-	builder.BuildObstacle_1(sf::Vector2f(1450.f, WINDOW_HEIGHT - 80.f), sf::Vector2f(100.f, 150.f), -450.f, 5.f);
+	builder.BuildObstacle_1(sf::Vector2f(1450.f, WINDOW_HEIGHT - 80.f), sf::Vector2f(100.f, 150.f), -450.f, 25.f);
 	builder.BuildPlatform(sf::Vector2f(750.0f, WINDOW_HEIGHT), sf::Vector2f(20.0f, 200.0f), "Textures/Platform.png");
 }
 

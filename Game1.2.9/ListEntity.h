@@ -22,7 +22,7 @@ public:
 	void includePlatform(sf::Vector2f position, sf::Vector2f size, const char* textureFile);
 	void Draw(sf::RenderWindow* window);
 	void Update(const float daltaTime);
-	void move(sf::Vector2f position, float speed);
+	void move(sf::Vector2f position, const float speed);
 	void CheckCollision(Character* other, const float push);
 	ListT<Entity*>::Element<Entity*>* getFirst() { return Entities.getpFirst(); }
 	void save();

@@ -42,7 +42,7 @@ public:
 
 
 	virtual void BuildObstacle(sf::Vector2f position, sf::Vector2f size) {}
-	virtual void BuildObstacle_1(sf::Vector2f position, sf::Vector2f size, float bulletSpeed, float bulletDamage);
+	virtual void BuildObstacle_1(sf::Vector2f position, sf::Vector2f size, const float bulletSpeed, const float bulletDamage);
 
 
 
